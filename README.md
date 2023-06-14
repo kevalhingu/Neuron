@@ -33,7 +33,7 @@ python manage.py migrate
 ```shell
 python manage.py createsuperuser
 ```
-#usage
+##usage
 
 To start the Neuron server, run the following command:
 ```shell
@@ -41,7 +41,7 @@ python manage.py runserver
 ```
 Once the server is running, you can access the website by navigating to http://localhost:8000 in your web browser.
 
-#features
+##features
 
 Neuron offers the following key features:
 
