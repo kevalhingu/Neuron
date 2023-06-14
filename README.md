@@ -33,7 +33,7 @@ python manage.py migrate
 ```shell
 python manage.py createsuperuser
 ```
-##usage
+## usage
 
 To start the Neuron server, run the following command:
 ```shell
