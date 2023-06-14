@@ -1,0 +1,66 @@
+.soln_card{
+    border: 1px solid blue;
+    border-radius: 10px;
+    background-color: #0000ff20;
+    padding: 1rem;
+    width: 300px;
+    padding-bottom: 3rem;
+    font-size: 2rem;
+    color: black;
+    position: relative;
+    margin: 0 2rem;
+    transition: 0.1s linear;
+}
+
+.soln_card pre{
+    font-size: 1rem;
+    opacity: 1rem;
+}
+
+.soln_card:hover{
+    scale: 0.98;
+}
+
+.soln_card::after{
+
+    content: '>>';
+    font-size: 3rem;
+    position: absolute;
+    right: 2rem;
+    color: blue;
+    bottom: 25%;
+
+}
+
+
+
+table {
+    margin-left: 2rem;
+    width: max-content;
+    font-size: 13px;
+    border-collapse: collapse;
+  }
+  
+  td,
+  th {
+    padding: 16px 24px;
+    text-align: left;
+  }
+  
+  thead tr {
+    background-color: #087f5b;
+    color: #fff;
+  }
+  
+  /* thead th {
+    width: 25%;
+  } */
+  
+  tbody tr:nth-child(odd) {
+    background-color: #f8f9fa;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #e9ecef;
+  }
+  

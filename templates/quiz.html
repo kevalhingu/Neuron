@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+  {% block title %}
+    Quiz - Neuron
+  {% endblock %}
+  {% block header_addon %}
+  <link rel="stylesheet" href="{% static 'css/quiz.css'%}">
+  {% endblock %}
+  {% block content %}
+  <h2 style="font-size: 2rem;margin: 3rem 0 4rem 2rem;">So, How're you feelin?</h2>
+  <form method="POST" action="/quiz" style="max-width: 40vw;">
+    {% csrf_token %}
+    <label for="happy">😃</label>
+    <input type="radio" value="happy" name="emoji" id="happy">
+    <label for="fear">😨</label>
+    <input type="radio" value="fear" name="emoji" id="fear">
+    <label for="surprise">😲</label>
+    <input type="radio" value="surprise" name="emoji" id="surprise">
+    <label for="angry">😠</label>
+    <input type="radio" value="angry" name="emoji" id="angry">
+    <label for="sad">😢</label>
+    <input type="radio" value="sad" name="emoji" id="sad">
+    <br/>
+    <textarea rows="10" cols="65" name="feeling_descr" placeholder="How you feeling rn?"></textarea>
+    <button type="submit">Yup, that's it</button>
+  </form>
+  {% endblock %}

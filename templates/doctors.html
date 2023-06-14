@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% load static %}
+  {% block title %}
+    Doctors - Neuron
+  {% endblock %}
+  {% block header_addon %}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+       
+html {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  height: 20vh;
+  background-color: none;
+  display: flex;
+  justify-content: left;
+  align-items: flex-end;
+  padding-top: 80px;
+}
+
+.menu {
+  display: grid;
+  grid-template-rows: 30px max-content;
+  gap: 10px;
+}
+
+.toggle {
+  all: unset;
+  background-color: dodgerblue;
+  color: white;
+  width: 170px;
+  padding: 10px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.toggle::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-width: 0 3px 3px 0;
+  border-style: solid;
+  transform: rotate(45deg);
+  transition: 0.4s;
+}
+
+.list {
+  background-color: white;
+  color: #444;
+  list-style: none;
+  display: grid;
+  grid-template-rows: repeat(4, 40px);
+  border-radius: 5px;
+  overflow: hidden;
+  height: 0;
+  transition: 0.4s;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  transition: 0.4s, transform 0.4s var(--delay);
+  transform: translateX(-100%);
+  user-select: none;
+  cursor: pointer;
+}
+
+.list-item:hover {
+  background-color: dodgerblue;
+  color: #fff;
+}
+
+.toggle:focus::after {
+  transform: rotate(225deg);
+}
+
+.toggle:focus ~ .list {
+  height: 160px;
+}
+
+.toggle:focus ~ .list .list-item {
+  transform: translateX(0);
+}
+.box:hover
+        {
+        -webkit-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+        -moz-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+        box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        transform: scale(1.1);
+        }
+        .navbar1 {
+        width: 50%;
+        margin: 0 auto;
+        background-color: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgb(255, 255, 255);
+        box-shadow: 2px 2px 2px ,0.2 gray;
+        text-align: center;
+        
+      }
+      .navbar-link {
+        display: inline-block;
+        padding: 10px 25px;
+        text-decoration: none;
+        color: black;
+        font-size: 19px;
+        transition: all 0.5s ease;
+      }
+      .navbar-link:hover {
+        color: green;
+        font-size: 20px;
+      }
+      body {
+        /* background-image: url('https://img.freepik.com/free-vector/hand-painted-watercolor-abstract-watercolor-background_23-2149018549.jpg?w=360'); */
+        background-image: url('https://www.shutterstock.com/image-illustration/blurred-lights-on-blue-gradient-260nw-227742202.jpg');
+
+        background-size: cover;
+        font-family: 'Montserrat', sans-serif;
+      } 
+
+
+    </style>
+    {% endblock %}
+  {% block content %}
+    
+<section class="doctors" id="doctors">
+
+    <h1 class="heading" style="padding-top: 10vh"> our <span>doctors</span> </h1>
+
+    <!-- <div class="container"> -->
+        <!-- <div class="menu">
+          <button class="toggle">Select your city</button>
+          <ul class="list">
+            <li class="list-item" style="--delay:0.2s">Ahmedabad</li>
+            <li class="list-item" style="--delay:0.4s">Surat</li>
+            <li class="list-item" style="--delay:0.6s">Mumbai</li>
+            <li class="list-item" style="--delay:0.8s">Hydrabad</li>
+            <li class="list-item" style="--delay:0.8s">Pune</li>
+          </ul>
+        </div>
+      </div> -->
+
+    <div class="box-container">
+      {% for doctor in doctors %}
+
+        <div class="box">
+            <img src="{{ doctor.photo.url }}" alt="">
+            <h3>{{doctor.name}}</h3>
+            <span>{{doctor.portfolio}}</span>
+            <pre style="font-size: 1rem">{{doctor.contact_no}}</pre>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+            </div>
+        </div>
+      {% endfor %}
+
+        
+    </div>
+
+</section>
+{% endblock %}

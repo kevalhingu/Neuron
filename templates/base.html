@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block header_addon %}
+    {% endblock %}
+    
+</head>
+<body>
+    
+<!-- header section starts  -->
+
+<header class="header" style="position: relative;margin-bottom: -4rem;">
+    <a href="/" class="logo"> <i class="fas fa-heartbeat"></i> Neuron </a>
+
+    <nav class="navbar">
+        <!-- <a href="#services">services</a> -->
+        <!-- <a href="#doctors">Contact us</a> -->
+        <a href="/therapy">Therapy</a>
+        <a href="/game">Games</a>
+        <a href="/doctors">doctors</a>
+        <a href="/stories">stories</a>
+        {% if request.user.is_authenticated %}
+            <a href="/analytics">Analytics</a>
+        {% endif %}
+
+
+        
+    </nav>
+    {% if username %}
+    <div style="display: flex;align-items: center;gap: 1rem">
+        <div style="border-right: 1px solid #00000020;padding-right: 1rem;">
+
+            <b style="font-size: 1.3rem;color: #16a085">Hello, </b>
+            <pre style="font-size: 1.5rem;color: #16a08590;">{{ username }}</pre>
+        </div>
+        <form method="GET" action="/logout">
+            {% csrf_token%}
+            <button type="submit" style="font-size: 1.2rem;color: tomato;cursor: pointer;background-color: transparent;">Logout</button>
+        </form>
+    </div>
+        <i class="fa fa-sign-out" aria-hidden="true"></i>
+    {% else %}
+
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login/signup</button>
+    {% endif %}
+    <div id="menu-btn" class="fas fa-bars"></div>
+    {% if message %}
+        <p style="position: absolute;bottom: -40%;left: 0vw;font-size: 1.3rem;padding: 1rem;background-color: tomato;color: white;width: 100vw;">{{ message }}</p>
+    {% endif %}
+</header>
+<section class="login" id="login">
+    <div id="id01" class="modal">
+  
+        <form class="modal-content animate" action="/login" method="post">
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" style="top: -2rem;" class="close" title="Close Modal">&times;</span>
+            <!-- <img src="{% static 'image/WhatsApp.jpg' %}" alt="Avatar" class="avatar"> -->
+          </div>
+          {% csrf_token%}
+      
+          <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" required>
+      
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+              
+            <button type="submit">Login</button>
+            <br>
+            <a href="/signup">Don't have an account? SignUp</a>
+            <!-- <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">signup</button> -->
+          </div>
+      
+          <!-- <div class="container" style="background-color:#f1f1f1">
+            <span class="psw">Forgot <a href="#">password?</a></span>
+          </div> -->
+        </form>
+      </div>
+
+</section>
+
+{% block content %}
+{% endblock %}
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="#"> <i class="fas fa-chevron-right"></i> home </a>
+            <a href="#"> <i class="fas fa-chevron-right"></i> about </a>
+            <a href="#"> <i class="fas fa-chevron-right"></i> doctors </a>
+            <a href="#"> <i class="fas fa-chevron-right"></i> blogs </a>
+        </div>
+
+        <div class="box">
+            <h3>our services</h3>
+            <a href="#"> <i class="fas fa-chevron-right"></i> Take Quiz </a>
+            <a href="#"> <i class="fas fa-chevron-right"></i> Daily Therapy </a>
+            <a href="#"> <i class="fas fa-chevron-right"></i> Games </a>
+            <a href="#"> <i class="fas fa-chevron-right"></i> Motivational videos </a>
+            <a href="#"> <i class="fas fa-chevron-right"></i> Warriors' fable </a>
+        </div>
+
+        <div class="box">
+            <h3>contact info</h3>
+            <a href="#"> <i class="fas fa-phone"></i> +91-6969696969 </a>
+            <!-- <a href="#"> <i class="fas fa-phone"></i> +111-222-3333 </a> -->
+            <a href="#"> <i class="fas fa-envelope"></i> contact@neuron.com </a>
+            <a href="#"> <i class="fas fa-envelope"></i> support@neuron.com </a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> Charusat - Anand, india - 38801 </a>
+        </div>
+
+        <div class="box">
+            <h3>follow us</h3>
+            <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
+            <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+            <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+            <a href="#"> <i class="fab fa-linkedin"></i> linkedin </a>
+            <a href="#"> <i class="fab fa-pinterest"></i> pinterest </a>
+        </div>
+
+    </div>
+
+    <div class="credit"> created by <span>Team Neuron</span> | all rights reserved </div>
+
+</section>
+
+<!-- footer section ends -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+{% block script_addon %}
+{% endblock %}
+
+</body>
+</html>

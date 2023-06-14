@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+{% load static %}
+  {% block title %}
+    Game - Neuron
+  {% endblock %}
+  {% block header_addon %}
+  {% comment %} <link rel="stylesheet" href="{% static 'css/game.css' %}"> {% endcomment %}
+  {% endblock %}
+  {% block content %}
+   <style>
+    .body{
+      
+    }
+    :root {
+      --card-height: 300px;
+      --card-width: calc(var(--card-height) / 1.5);
+    }
+    
+    .card {
+      width: var(--card-width);
+      height: var(--card-height);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 0 36px;
+      perspective: 2500px;
+      margin: 0 50px;
+    }
+    
+    .cover-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .wrapper {
+      transition: all 0.5s;
+      position: absolute;
+      width: 100%;
+      z-index: -1;
+    }
+    
+    .card:hover .wrapper {
+      transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+      box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+      -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+    }
+    
+    .wrapper::before,
+    .wrapper::after {
+      content: "";
+      opacity: 0;
+      width: 100%;
+      height: 80px;
+      transition: all 0.5s;
+      position: absolute;
+      left: 0;
+    }
+    .wrapper::before {
+      top: 0;
+      height: 100%;
+      background-image: linear-gradient(
+        to top,
+        transparent 46%,
+        rgba(12, 13, 19, 0.5) 68%,
+        rgba(12, 13, 19) 97%
+      );
+    }
+    .wrapper::after {
+      bottom: 0;
+      opacity: 1;
+      background-image: linear-gradient(
+        to bottom,
+        transparent 46%,
+        rgba(12, 13, 19, 0.5) 68%,
+        rgba(12, 13, 19) 97%
+      );
+    }
+    
+    .card:hover .wrapper::before,
+    .wrapper::after {
+      opacity: 1;
+    }
+    
+    .card:hover .wrapper::after {
+      height: 120px;
+    }
+    .title {
+      width: 100%;
+      transition: transform 0.5s;
+    }
+    .card:hover .title {
+      transform: translate3d(0%, -50px, 100px);
+    }
+    
+    .character {
+      width: 100%;
+      opacity: 0;
+      transition: all 0.5s;
+      position: absolute;
+      z-index: -1;
+    }
+    
+    .card:hover .character {
+      opacity: 1;
+      transform: translate3d(0%, -30%, 100px);
+    }
+    .container1 {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+    
+    .card1 {
+      height: calc(33.33% - 5px);
+      margin-top: 150px;
+      box-sizing: border-box;
+    }
+   </style> 
+   <h1 class="heading">Fun <span>Blast</span> </h1>
+   <div class="container1">
+     {% for game in games %}
+    <div class="card1">
+        
+        <a href="{{game.redirect_url}}" alt="mario" target="_blank">
+          <a href="{{game.redirect_url}}" alt="mario" target="_blank">
+            <div class="card">
+              <div class="wrapper">
+                <img src="{{game.cover}}" class="cover-image" />
+              </div>
+              <img src="{{game.badge}}" class="title" />
+              <img src="{{game.avatar}}" class="character" />
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+  <!-- <div class="card1"> 
+    <a href="https://supermarioplay.com/" alt="subwaysurf" target="_blank">
+      <div class="card">
+        <div class="wrapper">
+          <img src="https://w0.peakpx.com/wallpaper/817/354/HD-wallpaper-subway-surfers-app-store-android-mobile-games-subway-surfer-games-google-play-mobile-kiloo-ios.jpg" class="cover-image" />
+        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/en/b/b9/Subway_Surfers_app_logo.png" class="title" />
+        <img src="https://static.wikia.nocookie.net/subwaysurf/images/c/c8/Jake1.png/revision/latest/scale-to-width-down/250?cb=20221023130034" class="character" />
+      </div>
+    </a>
+    </div>
+    <div class="card1">
+      <a href="https://supermarioplay.com/" alt="fruitninja" target="_blank">
+        <div class="card">
+          <div class="wrapper">
+            <img src="https://i.pinimg.com/originals/3e/84/44/3e84442379341d253eb8dd3972f1dcd1.jpg" class="cover-image" />
+          </div>
+          <img src="https://www.pngkey.com/png/full/307-3073999_fruit-ninja-fruit-ninja-logo.png" class="title" />
+          <img src="https://freepngimg.com/thumb/ninja/2-2-ninja-png-pic.png" class="character" />
+        </div>
+      </a>
+      </div><div class="card1">
+        <a href="https://supermarioplay.com/" alt="mario" target="_blank">
+          <a href="#" alt="mario" target="_blank">
+            <div class="card">
+              <div class="wrapper">
+                <img src="https://i.pinimg.com/736x/fd/df/70/fddf70003483f19c1f844b3ed422ff76.jpg" class="cover-image" />
+              </div>
+              <img src="https://logos-world.net/wp-content/uploads/2022/01/Super-Mario-Logo.png" class="title" />
+              <img src="https://www.freepnglogos.com/uploads/mario-png/user-talk-yoshigo-archive-super-mario-wiki-the-mario-27.PNG" class="character" />
+            </div>
+          </a>
+        </div><div class="card1">
+          <a href="#" alt="mario" target="_blank">
+            <a href="#" alt="mario" target="_blank">
+              <div class="card">
+                <div class="wrapper">
+                  <img src="https://i.pinimg.com/736x/fd/df/70/fddf70003483f19c1f844b3ed422ff76.jpg" class="cover-image" />
+                </div>
+                <img src="https://logos-world.net/wp-content/uploads/2022/01/Super-Mario-Logo.png" class="title" />
+                <img src="https://www.freepnglogos.com/uploads/mario-png/user-talk-yoshigo-archive-super-mario-wiki-the-mario-27.PNG" class="character" />
+              </div>
+            </a>
+          </div><div class="card1">
+            <a href="#" alt="mario" target="_blank">
+              <a href="#" alt="mario" target="_blank">
+                <div class="card">
+                  <div class="wrapper">
+                    <img src="https://i.pinimg.com/736x/fd/df/70/fddf70003483f19c1f844b3ed422ff76.jpg" class="cover-image" />
+                  </div>
+                  <img src="https://logos-world.net/wp-content/uploads/2022/01/Super-Mario-Logo.png" class="title" />
+                  <img src="https://www.freepnglogos.com/uploads/mario-png/user-talk-yoshigo-archive-super-mario-wiki-the-mario-27.PNG" class="character" />
+                </div>
+              </a>
+            </div> -->
+  </div>
+
+  
+  {% endblock %}
