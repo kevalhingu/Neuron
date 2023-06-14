@@ -8,7 +8,7 @@ Neuron is a Django-based mental health care website that provides various featur
 - [Usage](#usage)
 - [Features](#features)
 - [Contributors](#contributors)
-- [License](#license)
+- [Screenshots](#screenshots)
 
 ## Installation
 
@@ -33,7 +33,7 @@ python manage.py migrate
 ```shell
 python manage.py createsuperuser
 ```
-## usage
+## Usage
 
 To start the Neuron server, run the following command:
 ```shell
@@ -41,18 +41,34 @@ python manage.py runserver
 ```
 Once the server is running, you can access the website by navigating to http://localhost:8000 in your web browser.
 
-##features
+## Features
 
 Neuron offers the following key features:
 
-Quiz functionality with analytics displayed on graphs
-Music therapy for relaxation and mental well-being
-Interactive games for mental stimulation
-Contact information for doctors in nearby metro cities during critical situations
-Inspiring stories of individuals who have overcome challenging situations
+-Quiz functionality with analytics displayed on graphs.
+-Music therapy for relaxation and mental well-being.
+-Interactive games for mental stimulation.
+-Contact information for doctors in nearby metro cities during critical situations.
+-Inspiring stories of individuals who have overcome challenging situations.
 
+## Contributors
 
+- Keval Hingu :
+     - [Linkedin](https://www.linkedin.com/in/keval-hingu-499211219/)
+     - [Github](https://github.com/kevalhingu)
+     
+- Hitwanshi Dalsania  :
+     - [Linkedin](https://www.linkedin.com/in/hitwanshi-dalsania-b69a73250/)
+     - [Github](https://github.com/hitwanshi12)
+     
+- Krishnan Pandya  :
+     - [Linkedin](https://www.linkedin.com/in/krishnanpandya/)
+     - [Github](https://github.com/krishnanpandya007)
 
+## Screenshots 
 
+Will be update soon 
 
-
+## 🎉 Acknowledgements 
+### Show your support
+Give a ⭐️ if this project helped you!
