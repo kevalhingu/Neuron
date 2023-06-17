@@ -9,7 +9,7 @@ Neuron is a Django-based mental health care website that provides various featur
 - [Features](#features)
 - [Contributors](#contributors)
 - [Screenshots](#screenshots)
-
+ 
 ## Installation
 
 To run the Neuron project, follow these steps:
